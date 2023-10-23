@@ -1,9 +1,9 @@
 import { Link, Route, Routes } from 'react-router-dom';
 import routes from '../routes';
-import Main from '../pages/Main';
-import Login from '../pages/Login';
-import Signup from '../pages/Signup';
-import Notfound from '../pages/Notfound';
+import { Main } from '../pages/Main';
+import { Login } from '../pages/Login';
+import { Signup } from '../pages/Signup';
+import { Notfound } from '../pages/Notfound';
 import PrivateRoute from './PrivateRoute';
 import { useAuth } from '../contexts/AuthContext';
 
