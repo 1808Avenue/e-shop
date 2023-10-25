@@ -1,5 +1,3 @@
-export const Main = () => (
-  <div>
-    <h1>Main page</h1>
-  </div>
-);
+import { MainHeader } from '../common-components/Header';
+
+export const Main = () => <MainHeader />;
