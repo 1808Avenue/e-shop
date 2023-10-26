@@ -9,6 +9,14 @@ import UserIcon from '/src/assets/images/header/user-icon.svg?react';
 import FavoriteIcon from '/src/assets/images/header/favorite-icon.svg?react';
 import LogoutIcon from '/src/assets/images/header/logout-icon.svg?react';
 
+const menuStyles = {
+  borderRadius: 0,
+  minWidth: '208px',
+  background: '#fff',
+  boxShadow: '6px 6px 6px 0px rgba(0, 0, 0, 0.25)',
+  padding: '12px',
+};
+
 export const MainHeader = () => {
   const { user, logOut } = useAuth();
 
@@ -32,14 +40,6 @@ export const MainHeader = () => {
       icon: <LogoutIcon />,
     },
   ];
-
-  const menuStyles = {
-    borderRadius: 0,
-    minWidth: '208px',
-    background: '#fff',
-    boxShadow: '6px 6px 6px 0px rgba(0, 0, 0, 0.25)',
-    padding: '12px',
-  };
 
   return (
     <Header className={styles.header}>
