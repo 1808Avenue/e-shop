@@ -1,5 +1,7 @@
+import { Header } from '../common-components/Header';
+
 export const Main = () => (
-  <div>
-    <h1>Main page</h1>
+  <div className="wrapper">
+    <Header />
   </div>
 );

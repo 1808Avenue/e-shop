@@ -1,37 +1,22 @@
-import { Link, Route, Routes } from 'react-router-dom';
-import routes from '../routes';
-import { Main } from '../pages/Main';
-import { Login } from '../pages/Login';
-import { Signup } from '../pages/Signup';
+import { Route, Routes } from 'react-router-dom';
 import { Notfound } from '../pages/Notfound';
 import PrivateRoute from './PrivateRoute';
-import { useAuth } from '../contexts/AuthContext';
+import { routesConfig } from './config';
 
 const AppRouter = () => {
-  const { logIn, logOut } = useAuth();
-
   return (
-    <>
-      <header>
-        <Link to={routes.rootPagePath()}>Main</Link>
-        <Link to={routes.loginPagePath()}>Login</Link>
-        <Link to={routes.signupPagePath()}>Signup</Link>
-        <button onClick={logIn}>login</button>
-        <button onClick={logOut}>logout</button>
-      </header>
-      <Routes>
-        <Route path={routes.rootPagePath()} element={<PrivateRoute />}>
-          <Route path={routes.rootPagePath()} element={<Main />} />
+    <Routes>
+      {routesConfig.map((route) => (
+        <Route
+          path={route.wrapperPath}
+          element={<PrivateRoute />}
+          key={route.key}
+        >
+          <Route path={route.path} element={route.element} />
         </Route>
-        <Route path={routes.loginPagePath()} element={<PrivateRoute />}>
-          <Route path={routes.loginPagePath()} element={<Login />} />
-        </Route>
-        <Route path={routes.signupPagePath()} element={<PrivateRoute />}>
-          <Route path={routes.signupPagePath()} element={<Signup />} />
-        </Route>
-        <Route path="*" element={<Notfound />} />
-      </Routes>
-    </>
+      ))}
+      <Route path="*" element={<Notfound />} />
+    </Routes>
   );
 };
 
