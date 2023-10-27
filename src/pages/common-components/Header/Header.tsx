@@ -1,4 +1,3 @@
-import { Header } from 'antd/es/layout/layout';
 import type { MenuProps } from 'antd';
 import { Dropdown, Button, ConfigProvider } from 'antd';
 import { useAuth } from '../../../contexts/AuthContext';
@@ -17,7 +16,7 @@ const menuStyles = {
   padding: '12px',
 };
 
-export const MainHeader = () => {
+export const Header = () => {
   const { user, logOut } = useAuth();
 
   const items: MenuProps['items'] = [
@@ -42,63 +41,65 @@ export const MainHeader = () => {
   ];
 
   return (
-    <Header className={styles.header}>
-      <div className={styles.header__inner}>
-        <Link to={routes.rootPagePath()}>
-          <div className={styles.logo}>
-            <div>
-              <img
-                className={styles.logo__img}
-                src="/src/assets/images/header/logo.svg"
-                draggable="false"
-                alt="logo"
-              />
+    <header className={styles.header}>
+      <div className={styles.header__container}>
+        <div className={styles.header__inner}>
+          <Link to={routes.rootPagePath()}>
+            <div className={styles.logo}>
+              <div>
+                <img
+                  className={styles.logo__img}
+                  src="/src/assets/images/header/logo.svg"
+                  draggable="false"
+                  alt="logo"
+                />
+              </div>
+              <div>
+                <h1 className={styles.logo__title}>E’Shop</h1>
+              </div>
             </div>
-            <div>
-              <h1 className={styles.logo__title}>E’Shop</h1>
+          </Link>
+          <nav className={styles.header__nav}>
+            <div className={styles.header__shopping_cart}>
+              <Link to={routes.shoppingCartPagePath()}>
+                <img
+                  src="/src/assets/images/header/shopping-cart.svg"
+                  draggable="false"
+                  alt="shopping-cart"
+                />
+              </Link>
             </div>
-          </div>
-        </Link>
-        <div className={styles.header__profile}>
-          <div className={styles.header__shopping_cart}>
-            <Link to={routes.shoppingCartPagePath()}>
-              <img
-                src="/src/assets/images/header/shopping-cart.svg"
-                draggable="false"
-                alt="shopping-cart"
-              />
-            </Link>
-          </div>
-          <div className={styles.header__dropdown}>
-            <ConfigProvider
-              theme={{
-                token: {
-                  colorPrimary: '#999a1c',
-                },
-              }}
-            >
-              <Dropdown
-                menu={{
-                  items,
-                  style: menuStyles,
+            <div className={styles.header__dropdown}>
+              <ConfigProvider
+                theme={{
+                  token: {
+                    colorPrimary: '#999a1c',
+                  },
                 }}
-                placement="bottomLeft"
-                trigger={['click']}
               >
-                <Button>
-                  {user?.username}
-                  <img
-                    className={styles.header__dropdown_arrow}
-                    src="/src/assets/images/header/arrow-down.svg"
-                    draggable="false"
-                    alt="arrow-down"
-                  />
-                </Button>
-              </Dropdown>
-            </ConfigProvider>
-          </div>
+                <Dropdown
+                  menu={{
+                    items,
+                    style: menuStyles,
+                  }}
+                  placement="bottomLeft"
+                  trigger={['click']}
+                >
+                  <Button>
+                    {user?.username}
+                    <img
+                      className={styles.header__dropdown_arrow}
+                      src="/src/assets/images/header/arrow-down.svg"
+                      draggable="false"
+                      alt="arrow-down"
+                    />
+                  </Button>
+                </Dropdown>
+              </ConfigProvider>
+            </div>
+          </nav>
         </div>
       </div>
-    </Header>
+    </header>
   );
 };

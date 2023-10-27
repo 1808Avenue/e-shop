@@ -1,23 +1,20 @@
 import { Route, Routes } from 'react-router-dom';
-import routes from '../routes';
-import { Main } from '../pages/Main';
-import { Login } from '../pages/Login';
-import { Signup } from '../pages/Signup';
 import { Notfound } from '../pages/Notfound';
 import PrivateRoute from './PrivateRoute';
+import { routesConfig } from './config';
 
 const AppRouter = () => {
   return (
     <Routes>
-      <Route path={routes.rootPagePath()} element={<PrivateRoute />}>
-        <Route path={routes.rootPagePath()} element={<Main />} />
-      </Route>
-      <Route path={routes.loginPagePath()} element={<PrivateRoute />}>
-        <Route path={routes.loginPagePath()} element={<Login />} />
-      </Route>
-      <Route path={routes.signupPagePath()} element={<PrivateRoute />}>
-        <Route path={routes.signupPagePath()} element={<Signup />} />
-      </Route>
+      {routesConfig.map((route) => (
+        <Route
+          path={route.wrapperPath}
+          element={<PrivateRoute />}
+          key={route.key}
+        >
+          <Route path={route.path} element={route.element} />
+        </Route>
+      ))}
       <Route path="*" element={<Notfound />} />
     </Routes>
   );

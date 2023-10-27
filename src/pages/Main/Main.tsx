@@ -1,3 +1,7 @@
-import { MainHeader } from '../common-components/Header';
+import { Header } from '../common-components/Header';
 
-export const Main = () => <MainHeader />;
+export const Main = () => (
+  <div className="wrapper">
+    <Header />
+  </div>
+);
