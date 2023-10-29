@@ -43,62 +43,53 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.header__container}>
-        <div className={styles.header__inner}>
-          <Link to={routes.rootPagePath()}>
-            <div className={styles.logo}>
-              <div>
-                <img
-                  className={styles.logo__img}
-                  src="/src/assets/images/header/logo.svg"
-                  draggable="false"
-                  alt="logo"
-                />
-              </div>
-              <div>
-                <h1 className={styles.logo__title}>E’Shop</h1>
-              </div>
-            </div>
-          </Link>
-          <nav className={styles.header__nav}>
-            <div className={styles.header__shopping_cart}>
-              <Link to={routes.shoppingCartPagePath()}>
-                <img
-                  src="/src/assets/images/header/shopping-cart.svg"
-                  draggable="false"
-                  alt="shopping-cart"
-                />
-              </Link>
-            </div>
-            <div className={styles.header__dropdown}>
-              <ConfigProvider
-                theme={{
-                  token: {
-                    colorPrimary: '#999a1c',
-                  },
+        <Link className={styles.header__logo} to={routes.rootPagePath()}>
+              <img
+                className={styles.header__logo_img}
+                src="/src/assets/images/header/logo.svg"
+                draggable="false"
+                alt="logo"
+              />
+              <h1 className={styles.header__logo_title}>E’Shop</h1>
+        </Link>
+        <nav className={styles.header__nav}>
+            <Link className={styles.header__shopping_cart} to={routes.shoppingCartPagePath()}>
+              <img
+                src="/src/assets/images/header/shopping-cart.svg"
+                draggable="false"
+                alt="shopping-cart"
+              />
+            </Link>
+          
+          <div className={styles.header__dropdown}>
+            <ConfigProvider
+              theme={{
+                token: {
+                  colorPrimary: '#999a1c',
+                },
+              }}
+            >
+              <Dropdown
+                menu={{
+                  items,
+                  style: menuStyles,
                 }}
+                placement="bottomLeft"
+                trigger={['click']}
               >
-                <Dropdown
-                  menu={{
-                    items,
-                    style: menuStyles,
-                  }}
-                  placement="bottomLeft"
-                  trigger={['click']}
-                >
-                  <Button>
-                    {user?.username}
-                    <img
-                      className={styles.header__dropdown_arrow}
-                      src="/src/assets/images/header/arrow-down.svg"
-                      draggable="false"
-                      alt="arrow-down"
-                    />
-                  </Button>
-                </Dropdown>
-              </ConfigProvider>
-            </div>
-          </nav>
-        </div>
+                <Button>
+                  {user?.username}
+                  <img
+                    className={styles.header__dropdown_arrow}
+                    src="/src/assets/images/header/arrow-down.svg"
+                    draggable="false"
+                    alt="arrow-down"
+                  />
+                </Button>
+              </Dropdown>
+            </ConfigProvider>
+          </div>
+        </nav>
       </div>
     </header>
   );
