@@ -1,0 +1,94 @@
+@import '/src/styles/mixins';
+
+$base-color: #999a1c;
+
+.header {
+  width: 100%;
+  max-height: 127px;
+  user-select: none;
+  margin-bottom: 20px; // temporary
+
+  &__container {
+    @include container;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media (max-width: 655px) {
+      flex-direction: column;
+      gap: 10px 0;
+      padding: 15px 20px 15px 20px;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: 0 15px;
+  }
+
+  &__logo_title {
+    font-size: 64px;
+    font-style: italic;
+    font-weight: 800;
+    line-height: normal;
+    margin: 0;
+  }
+
+  &__nav {
+    display: flex;
+    gap: 0 15px;
+    align-items: center;
+  }
+
+  &__dropdown {
+    position: relative;
+
+    :global {
+      .ant-btn {
+        display: flex;
+        align-items: center;
+        padding: 6px 51px 6px 18px;
+        min-height: 40px;
+        border-radius: 4px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        background: #fff;
+        color: $base-color;
+        text-align: justify;
+        font-family: Raleway;
+        font-size: 24px;
+        line-height: normal;
+      }
+
+      .ant-btn-default:not(:disabled):not(.ant-btn-disabled):hover {
+        color: $base-color;
+        border-color: rgba(0, 0, 0, 0.2);
+      }
+
+      .ant-btn-default:not(:disabled):not(.ant-btn-disabled):active {
+        color: $base-color;
+        border-color: rgba(0, 0, 0, 0.2);
+      }
+
+      .ant-dropdown-open img {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &__dropdown_arrow {
+    position: absolute;
+    right: 13px;
+  }
+}
+
+:global {
+  .ant-dropdown .ant-dropdown-menu .ant-dropdown-menu-item {
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 18px;
+    line-height: normal;
+  }
+}
