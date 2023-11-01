@@ -1,7 +1,7 @@
 import routes from '../routes';
-import { Main } from '../pages/Main';
-import { Login } from '../pages/Login';
-import { Signup } from '../pages/Signup';
+import { Main } from '../pages/main';
+import { Login } from '../pages/login';
+import { Signup } from '../pages/signup';
 
 export interface IRouteConfigItem {
   path: string;
@@ -12,20 +12,20 @@ export interface IRouteConfigItem {
 
 export const routesConfig: IRouteConfigItem[] = [
   {
-    path: routes.rootPagePath(),
-    wrapperPath: routes.rootPagePath(),
+    path: routes.pages.rootPagePath(),
+    wrapperPath: routes.pages.rootPagePath(),
     element: <Main />,
     key: 1,
   },
   {
-    path: routes.loginPagePath(),
-    wrapperPath: routes.rootPagePath(),
+    path: routes.pages.loginPagePath(),
+    wrapperPath: routes.pages.rootPagePath(),
     element: <Login />,
     key: 2,
   },
   {
-    path: routes.signupPagePath(),
-    wrapperPath: routes.signupPagePath(),
+    path: routes.pages.signupPagePath(),
+    wrapperPath: routes.pages.signupPagePath(),
     element: <Signup />,
     key: 3,
   },

@@ -1,0 +1,25 @@
+@import '/src/styles/mixins';
+
+.products {
+  &__container {
+    @include container;
+    padding-top: 40px;
+    padding-bottom: 36px;
+
+    @media (max-width: 655px) {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 214px);
+    justify-content: center;
+    gap: 18px;
+
+    @media (max-width: 485px) {
+      grid-template-columns: 270px;
+    }
+  }
+}

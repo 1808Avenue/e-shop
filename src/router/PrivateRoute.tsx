@@ -6,10 +6,11 @@ const PrivateRoute = () => {
   const { user } = useAuth();
   const location = useLocation();
 
-  if (location.pathname === routes.loginPagePath()) {
+
+  if (location.pathname === routes.pages.loginPagePath()) {
     return user ? (
       <Navigate
-        to={routes.rootPagePath()}
+        to={routes.pages.rootPagePath()}
         state={{ from: location.pathname }}
       />
     ) : (
@@ -17,10 +18,11 @@ const PrivateRoute = () => {
     );
   }
 
-  if (location.pathname === routes.signupPagePath()) {
+
+  if (location.pathname === routes.pages.signupPagePath()) {
     return user ? (
       <Navigate
-        to={routes.rootPagePath()}
+        to={routes.pages.rootPagePath()}
         state={{ from: location.pathname }}
       />
     ) : (
@@ -31,7 +33,10 @@ const PrivateRoute = () => {
   return user ? (
     <Outlet />
   ) : (
-    <Navigate to={routes.loginPagePath()} state={{ from: location.pathname }} />
+    <Navigate
+      to={routes.pages.loginPagePath()}
+      state={{ from: location.pathname }}
+    />
   );
 };
 
