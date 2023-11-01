@@ -6,6 +6,7 @@ const PrivateRoute = () => {
   const { user } = useAuth();
   const location = useLocation();
 
+
   if (location.pathname === routes.pages.loginPagePath()) {
     return user ? (
       <Navigate
@@ -16,6 +17,7 @@ const PrivateRoute = () => {
       <Outlet />
     );
   }
+
 
   if (location.pathname === routes.pages.signupPagePath()) {
     return user ? (
