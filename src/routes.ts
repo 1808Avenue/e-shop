@@ -1,8 +1,10 @@
-const apiPath = 'https://fakestoreapi.com';
+const apiPath = 'http://localhost:3000';
 
 export default {
   api: {
-    productsPath: () => [apiPath, 'products'].join('/'),
+    productsPath: (pageNumber: number, pageSize: number) =>
+      [apiPath, `products?_page=${pageNumber}&_limit=${pageSize}`].join('/'),
+    productsTotalCount: () => [apiPath, 'totalCount'].join('/'),
   },
   pages: {
     rootPagePath: () => '/',

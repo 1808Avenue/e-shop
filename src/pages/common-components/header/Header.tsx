@@ -4,9 +4,9 @@ import { useAuth } from '../../../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import styles from './Header.module.scss';
 import routes from '../../../routes';
-import UserIcon from '/src/assets/images/header/user-icon.svg?react';
-import FavoriteIcon from '/src/assets/images/header/favorite-icon.svg?react';
-import LogoutIcon from '/src/assets/images/header/logout-icon.svg?react';
+import IconUser from '/src/assets/images/header/user-icon.svg?react';
+import IconFavorite from '/src/assets/images/header/favorite-icon.svg?react';
+import IconLogout from '/src/assets/images/header/logout-icon.svg?react';
 
 const menuStyles = {
   borderRadius: 0,
@@ -23,14 +23,14 @@ export const Header = () => {
     {
       label: <Link to={routes.pages.userPagePath()}>Profile</Link>,
       key: '0',
-      icon: <UserIcon />,
+      icon: <IconUser />,
     },
     {
       label: (
         <Link to={routes.pages.favProductsPagePath()}>Favorite product</Link>
       ),
       key: '1',
-      icon: <FavoriteIcon />,
+      icon: <IconFavorite />,
     },
     {
       label: 'Log Out',
@@ -38,7 +38,7 @@ export const Header = () => {
       onClick() {
         logOut();
       },
-      icon: <LogoutIcon />,
+      icon: <IconLogout />,
     },
   ];
 
