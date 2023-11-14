@@ -1,13 +1,16 @@
 import { Link } from 'react-router-dom';
+
+import { TProduct } from '../../../../store/slices/products/productsSlice';
+
+import FavoriteProductIcon from '/src/assets/images/products/product-favorite-icon-fill.svg?react';
+
 import styles from './Product.module.scss';
-import FavoriteProductIcon from '/src/assets/images/products/product-favorite-icon.svg?react';
-import { TProduct } from '../../../../slices/productsSlice';
 
 export const Product = ({ product }: { product: TProduct }) => {
   return (
     <div className={styles.products__item}>
       <div className={styles.products__item_title_img}>
-        <FavoriteProductIcon className={styles.products__item_favorite_img} />
+        <FavoriteProductIcon />
       </div>
       <div className={styles.products__item_description}>
         <h3 className={styles.products__item_name}>{product.title}</h3>

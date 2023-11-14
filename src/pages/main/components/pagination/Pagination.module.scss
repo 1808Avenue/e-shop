@@ -1,10 +1,9 @@
 @import '/src/styles/mixins';
 
-.pagination {
-  &__container {
+.products {
+  &__pagination {
     display: flex;
     justify-content: flex-end;
-    margin-bottom: 40px;
     gap: 0 20px;
     align-items: center;
 
@@ -36,7 +35,7 @@
         line-height: normal;
 
         &:hover {
-          transform: scale(1.02);
+          @include scale;
         }
       }
 
@@ -65,7 +64,7 @@
     }
   }
 
-  &__text {
+  &__pagination_text {
     font-weight: 500;
     line-height: normal;
 
@@ -74,7 +73,7 @@
     }
   }
 
-  &__dropdown {
+  &__pagination_dropdown {
     display: flex;
     border-radius: 4px;
     justify-content: center;

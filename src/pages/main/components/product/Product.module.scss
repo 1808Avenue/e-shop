@@ -28,14 +28,18 @@
       }
     }
 
-    &_favorite_img {
+    &_title_img svg {
       position: absolute;
+      width: 24px;
+      width: 24px;
       right: 4.25%;
       top: 3.66%;
       cursor: pointer;
+      stroke: #000;
+      stroke-width: 1.6px;
 
       &:hover {
-        stroke: #000;
+        @include scale;
       }
     }
 
@@ -78,6 +82,10 @@
       width: 24px;
       right: 9.9%;
       bottom: 6.33%;
+
+      &:hover {
+        @include scale;
+      }
 
       @media (max-width: 485px) {
         width: 33px;

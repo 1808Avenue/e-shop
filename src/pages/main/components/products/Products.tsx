@@ -1,18 +1,23 @@
 import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../../slices/hooks';
+import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
 import {
-  fetchProducts,
-  selectCurrentPage,
   selectLoadingStatus,
   selectProducts,
-  selectPageSize,
-  fetchTotalCountProducts,
-} from '../../../../slices/productsSlice';
+} from '../../../../store/slices/products/selectors';
 import styles from './Products.module.scss';
 import { Loader } from '../../../common-components/loader';
 import { Product } from '../product';
 import { Pagination } from '../pagination';
 import LoadingStatus from '../../../../utils/LoadingStatus';
+import {
+  fetchProducts,
+  fetchTotalQtyProducts,
+} from '../../../../store/slices/products/thunks';
+import { Empty } from 'antd';
+import {
+  selectCurrentPage,
+  selectPageSize,
+} from '../../../../store/slices/pagination/selectors';
 
 export const Products = () => {
   const dispatch = useAppDispatch();
@@ -24,7 +29,7 @@ export const Products = () => {
   const currentPage = useAppSelector(selectCurrentPage);
 
   useEffect(() => {
-    dispatch(fetchTotalCountProducts()); // Получаем общее количество продуктов
+    dispatch(fetchTotalQtyProducts()); // Получаем общее количество продуктов
   }, [dispatch]);
 
   useEffect(() => {
@@ -36,16 +41,17 @@ export const Products = () => {
   }
 
   return (
-    <main>
-      <section className={styles.products}>
-        <div className={styles.products__container}>
-          <div className={styles.products__list}>
-            {products &&
-              products.map((item) => <Product product={item} key={item.id} />)}
-          </div>
-          <Pagination />
+    <section className={styles.products}>
+      <div className={styles.products__container}>
+        <div className={styles.products__list}>
+          {products &&
+            products.map((item) => <Product product={item} key={item.id} />)}
         </div>
-      </section>
-    </main>
+        {products.length === 0 && (
+          <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
+        )}
+        <Pagination />
+      </div>
+    </section>
   );
 };
