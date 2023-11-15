@@ -4,19 +4,19 @@ import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
 import {
   changeCurrentPage,
   changePageSize,
-} from '../../../../store/slices/pagination/paginationSlice';
-import { selectTotalProducts } from '../../../../store/slices/products/selectors';
+} from '../../../../store/features/pagination/slice';
+import { selectTotalProducts } from '../../../../store/features/products/selectors';
 import IconPaginationArrow from '/src/assets/images/products/pagination-arrow-icon.svg?react';
 import {
   dropdownStyles,
   paginationStyles,
   selectOptions,
   selectStyles,
-} from './utils';
+} from './const';
 import {
   selectCurrentPage,
   selectPageSize,
-} from '../../../../store/slices/pagination/selectors';
+} from '../../../../store/features/pagination/selectors';
 import { useCallback } from 'react';
 
 export const Pagination = () => {

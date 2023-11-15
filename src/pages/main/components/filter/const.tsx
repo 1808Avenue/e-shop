@@ -2,18 +2,6 @@ import { MenuProps } from 'antd';
 import IconArrowUp from '/src/assets/images/search/arrow-up-icon.svg?react';
 import IconArrowDown from '/src/assets/images/search/arrow-down-icon.svg?react';
 
-export const inputStyles = {
-  colorPrimary: '#00000014',
-  colorPrimaryHover: '#0000004d',
-  colorPrimaryActive: '#0000004d',
-  colorPrimaryBgHover: '#0000004d',
-  fontSize: 18,
-  fontFamily: 'Raleway',
-  lineHeight: 1.2,
-  controlOutline: '0',
-  borderRadius: 4,
-};
-
 export const menuStyles = {
   borderRadius: 0,
   background: '#fff',

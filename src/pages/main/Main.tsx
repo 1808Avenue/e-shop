@@ -1,13 +1,13 @@
 import { Header } from '../common-components/header';
+import { InteractionBar } from './components/interactionBar/InteractionBar';
 import { Products } from './components/products';
-import { Search } from './components/search';
 
 export const Main = () => {
   return (
     <div className="wrapper">
       <Header />
+      <InteractionBar />
       <main>
-        <Search />
         <Products />
       </main>
     </div>

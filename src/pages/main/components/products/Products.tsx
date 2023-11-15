@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
 import {
   selectLoadingStatus,
   selectProducts,
-} from '../../../../store/slices/products/selectors';
+} from '../../../../store/features/products/selectors';
 import styles from './Products.module.scss';
 import { Loader } from '../../../common-components/loader';
 import { Product } from '../product';
@@ -12,12 +12,12 @@ import LoadingStatus from '../../../../utils/LoadingStatus';
 import {
   fetchProducts,
   fetchTotalQtyProducts,
-} from '../../../../store/slices/products/thunks';
+} from '../../../../store/features/products/thunks';
 import { Empty } from 'antd';
 import {
   selectCurrentPage,
   selectPageSize,
-} from '../../../../store/slices/pagination/selectors';
+} from '../../../../store/features/pagination/selectors';
 
 export const Products = () => {
   const dispatch = useAppDispatch();
@@ -41,7 +41,7 @@ export const Products = () => {
   }
 
   return (
-    <section className={styles.products}>
+    <section className="products">
       <div className={styles.products__container}>
         <div className={styles.products__list}>
           {products &&
