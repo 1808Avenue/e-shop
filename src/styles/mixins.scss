@@ -4,3 +4,7 @@
   padding-right: 55px;
   margin: 0 auto;
 }
+
+@mixin scale {
+  transform: scale(1.02);
+}
