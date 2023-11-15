@@ -1,0 +1,39 @@
+@import '/src/styles/mixins';
+
+.interaction_bar {
+  &__container {
+    @include container;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+
+    @media (max-width: 1266px) {
+      max-width: 1020px;
+    }
+
+    @media (max-width: 1019px) {
+      flex-direction: column;
+      gap: 20px 0;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    gap: 0 120px;
+
+    @media (max-width: 1266px) {
+      gap: 0 60px;
+    }
+
+    @media (max-width: 1019px) {
+      gap: 0 18px;
+    }
+
+    @media (max-width: 485px) {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 9px 0;
+    }
+  }
+}

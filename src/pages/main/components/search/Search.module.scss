@@ -1,0 +1,20 @@
+.interaction_bar {
+  &__search {
+    min-width: 548px;
+    min-height: 40px;
+
+    @media (max-width: 1266px) {
+      min-width: 390px;
+    }
+
+    @media (max-width: 420px) {
+      min-width: 270px;
+    }
+
+    :global {
+      .ant-input-affix-wrapper-focused {
+        border-color: #0000004d;
+      }
+    }
+  }
+}

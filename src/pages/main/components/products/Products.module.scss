@@ -1,0 +1,35 @@
+@import '/src/styles/mixins';
+
+.products {
+  &__container {
+    @include container;
+    display: flex;
+    flex-direction: column;
+    gap: 40px 0;
+    padding-top: 40px;
+    padding-bottom: 26px;
+
+    @media (max-width: 655px) {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 214px);
+    justify-content: center;
+    gap: 18px;
+
+    @media (max-width: 500px) {
+      grid-template-columns: 270px;
+    }
+  }
+
+  :global {
+    .ant-empty-description {
+      font-family: Raleway;
+      font-size: 16px;
+    }
+  }
+}
