@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { TProduct } from '../../../../store/slices/products/productsSlice';
+import { TProduct } from '../../../../store/features/products/slice';
 
 import FavoriteProductIcon from '/src/assets/images/products/product-favorite-icon-fill.svg?react';
 

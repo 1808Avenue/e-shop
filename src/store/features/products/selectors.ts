@@ -1,4 +1,4 @@
-import { TProduct } from './productsSlice';
+import { TProduct } from './slice';
 
 export const selectProducts = (state: { products: { products: TProduct[] } }) =>
   state.products.products;

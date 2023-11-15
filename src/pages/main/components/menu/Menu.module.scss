@@ -1,0 +1,9 @@
+@import '/src/styles/mixins';
+
+.interaction_bar {
+  &__menu_button {
+    &:hover {
+      @include scale;
+    }
+  }
+}
