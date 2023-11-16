@@ -12,7 +12,7 @@ import {
   paginationStyles,
   selectOptions,
   selectStyles,
-} from './const';
+} from './consts';
 import {
   selectCurrentPage,
   selectPageSize,
