@@ -1,2 +1,3 @@
-export const selectSidebarStatus = (state: { sidebar: { isOpen: boolean } }) =>
-  state.sidebar.isOpen;
+import { RootState } from '../..';
+
+export const selectSidebarStatus = (state: RootState) => state.sidebar.isOpen;
