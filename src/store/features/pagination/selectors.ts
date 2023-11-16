@@ -1,6 +1,6 @@
-export const selectPageSize = (state: { pagination: { pageSize: number } }) =>
-  state.pagination.pageSize;
+import { RootState } from '../..';
 
-export const selectCurrentPage = (state: {
-  pagination: { currentPage: number };
-}) => state.pagination.currentPage;
+export const selectPageSize = (state: RootState) => state.pagination.pageSize;
+
+export const selectCurrentPage = (state: RootState) =>
+  state.pagination.currentPage;

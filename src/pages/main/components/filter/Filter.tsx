@@ -1,6 +1,6 @@
 import { ConfigProvider, Dropdown, Button } from 'antd';
 import styles from './Filter.module.scss';
-import { items, menuStyles } from './const';
+import { items, menuStyles } from './consts';
 import IconButtonArrowDown from '/src/assets/images/search/button-arrow-down-icon.svg?react';
 
 export const Filter = () => {

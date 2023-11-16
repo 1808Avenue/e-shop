@@ -1,15 +1,11 @@
-import { TProduct } from './slice';
+import { RootState } from '../..';
 
-export const selectProducts = (state: { products: { products: TProduct[] } }) =>
-  state.products.products;
+export const selectProducts = (state: RootState) => state.products.products;
 
-export const selectTotalProducts = (state: {
-  products: { totalProducts: number };
-}) => state.products.totalProducts;
+export const selectTotalProducts = (state: RootState) =>
+  state.products.totalProducts;
 
-export const selectLoadingStatus = (state: {
-  products: { loadingStatus: string };
-}) => state.products.loadingStatus;
+export const selectLoadingStatus = (state: RootState) =>
+  state.products.loadingStatus;
 
-export const selectFetchError = (state: { products: { error: null } }) =>
-  state.products.error;
+export const selectFetchError = (state: RootState) => state.products.error;
