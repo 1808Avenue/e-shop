@@ -1,7 +1,7 @@
-import routes from '../routes';
-import { Main } from '../pages/main';
 import { Login } from '../pages/login';
+import { Main } from '../pages/main';
 import { Signup } from '../pages/signup';
+import routes from '../routes';
 
 export interface IRouteConfigItem {
   path: string;

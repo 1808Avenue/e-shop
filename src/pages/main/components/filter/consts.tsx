@@ -1,4 +1,5 @@
 import { MenuProps } from 'antd';
+
 import IconArrowUp from '/src/assets/images/search/arrow-up-icon.svg?react';
 import IconArrowDown from '/src/assets/images/search/arrow-down-icon.svg?react';
 

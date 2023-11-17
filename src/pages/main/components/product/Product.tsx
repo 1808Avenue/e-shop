@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom';
 
+import styles from './Product.module.scss';
 import { TProduct } from '../../../../store/features/products/slice';
 
 import FavoriteProductIcon from '/src/assets/images/products/product-favorite-icon-fill.svg?react';
-
-import styles from './Product.module.scss';
 
 export const Product = ({ product }: { product: TProduct }) => {
   return (

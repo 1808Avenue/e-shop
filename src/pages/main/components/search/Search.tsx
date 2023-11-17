@@ -1,12 +1,17 @@
 import { Input, ConfigProvider } from 'antd';
-import styles from './Search.module.scss';
-import IconSearch from '/src/assets/images/search/search-icon.svg?react';
-import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
-import { selectPageSize } from '../../../../store/features/pagination/selectors';
+
 import { inputStyles } from './consts';
-import { fetchFilterProducts } from '../../../../store/features/products/thunks';
-import debounce, { delay } from '../../../../utils/debounce';
+import styles from './Search.module.scss';
+
+import IconSearch from '/src/assets/images/search/search-icon.svg?react';
+
+import { selectPageSize } from '../../../../store/features/pagination/selectors';
+
 import { BaseSyntheticEvent } from 'react';
+
+import { fetchFilterProducts } from '../../../../store/features/products/thunks';
+import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
+import debounce, { delay } from '../../../../utils/debounce';
 
 export const Search = () => {
   const dispatch = useAppDispatch();

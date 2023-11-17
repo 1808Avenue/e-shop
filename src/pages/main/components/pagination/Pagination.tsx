@@ -1,23 +1,27 @@
 import { Pagination as AntdPagination, ConfigProvider, Select } from 'antd';
-import styles from './Pagination.module.scss';
-import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
-import {
-  changeCurrentPage,
-  changePageSize,
-} from '../../../../store/features/pagination/slice';
-import { selectTotalProducts } from '../../../../store/features/products/selectors';
+
 import IconPaginationArrow from '/src/assets/images/products/pagination-arrow-icon.svg?react';
+
 import {
   dropdownStyles,
   paginationStyles,
   selectOptions,
   selectStyles,
 } from './consts';
+import styles from './Pagination.module.scss';
 import {
   selectCurrentPage,
   selectPageSize,
 } from '../../../../store/features/pagination/selectors';
+
 import { useCallback } from 'react';
+
+import {
+  changeCurrentPage,
+  changePageSize,
+} from '../../../../store/features/pagination/slice';
+import { selectTotalProducts } from '../../../../store/features/products/selectors';
+import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
 
 export const Pagination = () => {
   const dispatch = useAppDispatch();
