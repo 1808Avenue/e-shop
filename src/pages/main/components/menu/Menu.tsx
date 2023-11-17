@@ -1,6 +1,6 @@
+import styles from './Menu.module.scss';
 import { toggleSidebar } from '../../../../store/features/sidebar/slice';
 import { useAppDispatch } from '../../../../store/hooks';
-import styles from './Menu.module.scss';
 
 export const Menu = () => {
   const dispatch = useAppDispatch();

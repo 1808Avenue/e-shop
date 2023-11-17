@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
-import productsReducer from './features/products/slice.ts';
+
 import paginationReducer from './features/pagination/slice.ts';
+import productsReducer from './features/products/slice.ts';
 import sidebarReducer from './features/sidebar/slice.ts';
 
 const store = configureStore({

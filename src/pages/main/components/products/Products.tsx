@@ -1,23 +1,25 @@
 import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
-import {
-  selectLoadingStatus,
-  selectProducts,
-} from '../../../../store/features/products/selectors';
-import styles from './Products.module.scss';
-import { Loader } from '../../../common-components/loader';
-import { Product } from '../product';
-import { Pagination } from '../pagination';
-import LoadingStatus from '../../../../utils/LoadingStatus';
-import {
-  fetchProducts,
-  fetchTotalQtyProducts,
-} from '../../../../store/features/products/thunks';
+
 import { Empty } from 'antd';
+
+import styles from './Products.module.scss';
 import {
   selectCurrentPage,
   selectPageSize,
 } from '../../../../store/features/pagination/selectors';
+import {
+  selectLoadingStatus,
+  selectProducts,
+} from '../../../../store/features/products/selectors';
+import {
+  fetchProducts,
+  fetchTotalQtyProducts,
+} from '../../../../store/features/products/thunks';
+import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
+import LoadingStatus from '../../../../utils/LoadingStatus';
+import { Loader } from '../../../common-components/loader';
+import { Pagination } from '../pagination';
+import { Product } from '../product';
 
 export const Products = () => {
   const dispatch = useAppDispatch();

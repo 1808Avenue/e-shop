@@ -1,10 +1,11 @@
 import { createSlice, SerializedError } from '@reduxjs/toolkit';
-import LoadingStatus from '../../../utils/LoadingStatus';
+
 import {
   fetchFilterProducts,
   fetchProducts,
   fetchTotalQtyProducts,
 } from './thunks';
+import LoadingStatus from '../../../utils/LoadingStatus';
 
 export type TProduct = {
   id: number;

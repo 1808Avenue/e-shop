@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+
 import { TProduct } from './slice';
 import routes from '../../../routes';
 

@@ -1,10 +1,12 @@
 import { Drawer } from 'antd';
+
 import { bodyStyles, mainStyles, rootStyles, wrapperStyles } from './consts';
-import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
-import { selectSidebarStatus } from '../../../../store/features/sidebar/selectors';
-import { toggleSidebar } from '../../../../store/features/sidebar/slice';
-import IconSidebarClose from '/src/assets/images/sidebar/sidebar-close-icon.svg?react';
 import styles from './Sidebar.module.scss';
+import { selectSidebarStatus } from '../../../../store/features/sidebar/selectors';
+import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
+import { toggleSidebar } from '../../../../store/features/sidebar/slice';
+
+import IconSidebarClose from '/src/assets/images/sidebar/sidebar-close-icon.svg?react';
 
 export const Sidebar = () => {
   const dispatch = useAppDispatch();

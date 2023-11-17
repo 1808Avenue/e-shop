@@ -1,9 +1,13 @@
 import type { MenuProps } from 'antd';
 import { Dropdown, Button, ConfigProvider } from 'antd';
+
 import { useAuth } from '../../../contexts/AuthContext';
+
 import { Link } from 'react-router-dom';
+
 import styles from './Header.module.scss';
 import routes from '../../../routes';
+
 import IconUser from '/src/assets/images/header/user-icon.svg?react';
 import IconFavorite from '/src/assets/images/header/favorite-icon.svg?react';
 import IconLogout from '/src/assets/images/header/logout-icon.svg?react';
