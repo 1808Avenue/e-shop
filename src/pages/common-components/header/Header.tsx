@@ -31,7 +31,7 @@ export const Header = () => {
     },
     {
       label: (
-        <Link to={routes.pages.favProductsPagePath()}>Favorite product</Link>
+        <Link to={routes.pages.favoritesPagePath()}>Favorite product</Link>
       ),
       key: '1',
       icon: <IconFavorite />,

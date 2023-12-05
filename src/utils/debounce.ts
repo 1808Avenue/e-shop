@@ -10,6 +10,6 @@ const debounce = (fn: (e: BaseSyntheticEvent) => void, delay: number) => {
   };
 };
 
-export const delay = 230;
+export const delay = 1500;
 
 export default debounce;

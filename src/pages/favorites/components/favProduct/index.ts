@@ -1,0 +1,1 @@
+export { FavProduct } from './FavProduct';

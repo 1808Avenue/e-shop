@@ -1,7 +1,7 @@
 import styles from './InteractionBar.module.scss';
-import { Filter } from '../filter';
 import { Menu } from '../menu';
 import { Search } from '../search';
+import { Sort } from '../sort';
 
 export const InteractionBar = () => {
   return (
@@ -11,7 +11,7 @@ export const InteractionBar = () => {
           <Menu />
           <Search />
         </div>
-        <Filter />
+        <Sort />
       </div>
     </section>
   );

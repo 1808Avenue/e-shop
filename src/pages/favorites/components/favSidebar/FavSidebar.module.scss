@@ -1,0 +1,78 @@
+@import '/src/styles/mixins';
+
+.fav_sidebar {
+  font-family: Raleway;
+  user-select: none;
+
+  &__title {
+    font-size: 36px;
+    font-style: italic;
+    font-weight: 200;
+    line-height: normal;
+    margin-bottom: 32px;
+  }
+
+  &__list_container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px 0;
+    margin-bottom: 40px;
+  }
+
+  &__list_title {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    margin-bottom: 18px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px 0;
+    margin: 0;
+    padding-left: 16px;
+  }
+
+  &__list_item {
+    position: relative;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+  }
+
+  &__list_item_active::before {
+    content: '';
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    color: #f56132;
+    background-color: #fdfaaf;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 1px;
+    left: -15px;
+    top: 6px;
+  }
+
+  &__list_button {
+    &:hover {
+      @include scale;
+    }
+  }
+}
+
+:global {
+  .ant-drawer-header-title {
+    justify-content: flex-end;
+
+    button:hover {
+      @include scale;
+    }
+  }
+
+  .ant-drawer-body {
+    flex-direction: column;
+  }
+}
