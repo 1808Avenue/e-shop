@@ -16,6 +16,7 @@
     display: flex;
     flex-direction: column;
     gap: 24px 0;
+    margin-bottom: 40px;
   }
 
   &__list_title {
@@ -35,12 +36,27 @@
   }
 
   &__list_item {
+    position: relative;
     font-size: 18px;
     font-style: normal;
     font-weight: 300;
     line-height: normal;
-    cursor: pointer;
+  }
 
+  &__list_item_active::before {
+    content: '';
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    color: #f56132;
+    background-color: #fdfaaf;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 1px;
+    left: -15px;
+    top: 6px;
+  }
+
+  &__list_button {
     &:hover {
       @include scale;
     }

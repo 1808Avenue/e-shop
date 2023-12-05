@@ -1,0 +1,57 @@
+@import '/src/styles/mixins';
+
+.FavInteraction_bar {
+  &__container {
+    @include container;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+
+    @media (max-width: 1251px) {
+      max-width: 1020px;
+    }
+
+    @media (max-width: 1019px) {
+      max-width: 800px;
+    }
+
+    // @media (max-width: 940px) {
+    //   flex-direction: column;
+    //   gap: 20px 0;
+    // }
+  }
+
+  &__nav {
+    display: flex;
+    gap: 0 305px;
+
+    @media (max-width: 1251px) {
+      gap: 0 195px;
+    }
+
+    @media (max-width: 1019px) {
+      gap: 0 85px;
+    }
+
+    @media (max-width: 787px) {
+      flex-direction: column;
+      margin: 0 auto;
+      gap: 0;
+    }
+
+    @media (max-width: 485px) {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 9px 0;
+    }
+  }
+
+  &__title {
+    font-size: 48px;
+    font-style: italic;
+    font-weight: 600;
+    line-height: normal;
+    text-align: center;
+  }
+}

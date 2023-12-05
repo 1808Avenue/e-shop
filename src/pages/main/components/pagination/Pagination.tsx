@@ -9,42 +9,32 @@ import {
   selectStyles,
 } from './consts';
 import styles from './Pagination.module.scss';
+import { selectProductsQueryParams } from '../../../../store/features/products/selectors';
 import {
-  selectCurrentPage,
-  selectPageSize,
-} from '../../../../store/features/pagination/selectors';
-
-import { useCallback } from 'react';
-
-import {
-  changeCurrentPage,
-  changePageSize,
-} from '../../../../store/features/pagination/slice';
-import { selectTotalProducts } from '../../../../store/features/products/selectors';
+  changeProductsLimitParams,
+  changeProductsPageParams,
+} from '../../../../store/features/products/slice';
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
 
-export const Pagination = () => {
+export const Pagination = ({ totalCount }: { totalCount: number }) => {
   const dispatch = useAppDispatch();
 
-  const totalProductsCount = useAppSelector(selectTotalProducts);
-  const pageNumber = useAppSelector(selectCurrentPage);
-  const pageSize = useAppSelector(selectPageSize);
+  const params = useAppSelector(selectProductsQueryParams);
+  const pageNumber = Number(params._page);
+  const pageSize = Number(params._limit);
 
-  const handleCurrentPage = (newPageNumber: number) => {
-    dispatch(changeCurrentPage(newPageNumber));
+  const handlerChangePageNumber = (newPageNumber: number) => {
+    dispatch(changeProductsPageParams(newPageNumber));
   };
 
-  const handlePageSize = useCallback(
-    (newPageSize: number) => {
-      if (pageNumber * newPageSize > totalProductsCount) {
-        dispatch(
-          changeCurrentPage(Math.ceil(totalProductsCount / newPageSize))
-        );
-      }
-      dispatch(changePageSize(newPageSize));
-    },
-    [dispatch, pageNumber, totalProductsCount]
-  );
+  const handlerChangePageSize = (newPageSize: number) => {
+    if (pageNumber * newPageSize > totalCount) {
+      dispatch(changeProductsPageParams(Math.ceil(totalCount / newPageSize)));
+      dispatch(changeProductsLimitParams(newPageSize));
+    } else {
+      dispatch(changeProductsLimitParams(newPageSize));
+    }
+  };
 
   return (
     <div className={styles.products__pagination}>
@@ -52,20 +42,21 @@ export const Pagination = () => {
       <ConfigProvider theme={selectStyles}>
         <Select
           popupClassName={styles.products__pagination_dropdown}
-          onChange={handlePageSize}
+          onChange={handlerChangePageSize}
           defaultValue={pageSize}
           options={selectOptions}
           dropdownStyle={dropdownStyles}
           suffixIcon={<IconPaginationArrow />}
+          getPopupContainer={(trigger) => trigger.parentElement}
         />
       </ConfigProvider>
       <ConfigProvider theme={paginationStyles}>
         <AntdPagination
           current={pageNumber}
           pageSize={pageSize}
-          total={totalProductsCount}
+          total={totalCount}
           showSizeChanger={false}
-          onChange={handleCurrentPage}
+          onChange={handlerChangePageNumber}
           responsive
         />
       </ConfigProvider>

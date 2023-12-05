@@ -1,0 +1,1 @@
+export { FavInterActionBar } from './FavInteractionBar';
