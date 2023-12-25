@@ -1,0 +1,48 @@
+@import '/src/styles/mixins';
+
+.fav_products {
+  &__container {
+    @include container;
+    display: flex;
+    flex-direction: column;
+    gap: 40px 0;
+    padding-top: 40px;
+    padding-bottom: 26px;
+
+    @media (max-width: 655px) {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+
+  &__card {
+    min-height: 254.43px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    background: #fff;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 214px);
+    justify-content: center;
+    gap: 18px;
+
+    @media (max-width: 485px) {
+      grid-template-columns: 270px;
+    }
+
+    :global {
+      .ant-skeleton.ant-skeleton-active .ant-skeleton-paragraph > li {
+        min-height: 20px;
+      }
+    }
+  }
+
+  :global {
+    .ant-empty-description {
+      font-family: Raleway;
+      font-size: 16px;
+    }
+  }
+}

@@ -1,3 +1,5 @@
+import { Cart } from '../pages/cart';
+import { Favorites } from '../pages/favorites';
 import { Login } from '../pages/login';
 import { Main } from '../pages/main';
 import { Signup } from '../pages/signup';
@@ -28,5 +30,17 @@ export const routesConfig: IRouteConfigItem[] = [
     wrapperPath: routes.pages.signupPagePath(),
     element: <Signup />,
     key: 3,
+  },
+  {
+    path: routes.pages.favoritesPagePath(),
+    wrapperPath: routes.pages.favoritesPagePath(),
+    element: <Favorites />,
+    key: 4,
+  },
+  {
+    path: routes.pages.shoppingCartPagePath(),
+    wrapperPath: routes.pages.shoppingCartPagePath(),
+    element: <Cart />,
+    key: 5,
   },
 ];

@@ -1,0 +1,39 @@
+.interaction_bar {
+  &__sort {
+    display: flex;
+    align-items: center;
+    gap: 0 18px;
+
+    @media (max-width: 500px) {
+      flex-direction: column;
+      gap: 9px 0;
+    }
+  }
+
+  &__sort_text {
+    font-size: 24px;
+    font-style: italic;
+    font-weight: 300;
+    line-height: normal;
+  }
+
+  &__select {
+    position: relative;
+
+    :global {
+      .ant-select {
+        width: 233px;
+        max-width: 233px;
+        min-height: 40px;
+      }
+      .ant-select-selection-item {
+        font-size: 15px;
+        text-align: left;
+      }
+
+      .ant-select-open .ant-select-arrow {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}

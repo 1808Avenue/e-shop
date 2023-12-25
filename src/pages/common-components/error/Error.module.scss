@@ -1,0 +1,23 @@
+@import '/src/styles/mixins';
+
+.error {
+  margin-top: 50px;
+  font-family: Raleway;
+
+  :global {
+    .anticon.anticon-close-circle {
+      color: #f56132;
+    }
+
+    .ant-btn {
+      border-radius: 4px;
+      transition: none;
+    }
+
+    .ant-btn-default:not(:disabled):not(.ant-btn-disabled):hover {
+      color: #000;
+      border-color: #d9d9d9;
+      @include scale;
+    }
+  }
+}

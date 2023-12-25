@@ -1,11 +1,9 @@
 import { RootState } from '../..';
 
-export const selectProducts = (state: RootState) => state.products.products;
+// query params
+export const selectProductsQueryParams = (state: RootState) =>
+  state.products.params;
 
-export const selectTotalProducts = (state: RootState) =>
-  state.products.totalProducts;
-
-export const selectLoadingStatus = (state: RootState) =>
-  state.products.loadingStatus;
-
-export const selectFetchError = (state: RootState) => state.products.error;
+//   sidebar
+export const selectProductsSidebarStatus = (state: RootState) =>
+  state.products.sidebar.isOpen;

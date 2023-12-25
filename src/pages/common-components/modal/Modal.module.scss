@@ -1,0 +1,68 @@
+@import '/src/styles/mixins';
+
+.modal {
+  position: relative;
+  min-width: 300px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: fixed;
+  padding: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  background-color: #fff;
+  gap: 20px 0;
+
+  box-shadow:
+    rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  z-index: 6;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  // animation: modal--active 1s;
+
+  // @keyframes modal--active {
+  //   from {
+  //     top: -50%;
+  //   }
+  //   to {
+  //     top: 50%;
+  //   }
+  // }
+
+  &__button {
+    padding: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow:
+      rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+      rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    border-radius: 4px;
+  }
+
+  &__button_confirm {
+    background-color: #b6fdaf;
+    &:hover {
+      box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    }
+  }
+
+  &__button_decline {
+    background-color: #fdfaaf88;
+    &:hover {
+      box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    }
+  }
+}
+
+.overlay {
+  z-index: 4;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+}

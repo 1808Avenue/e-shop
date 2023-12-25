@@ -1,100 +1,55 @@
-import { createSlice, SerializedError } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
-import {
-  fetchFilterProducts,
-  fetchProducts,
-  fetchTotalQtyProducts,
-} from './thunks';
-import LoadingStatus from '../../../utils/LoadingStatus';
-
-export type TProduct = {
-  id: number;
-  title: string;
-  price: string;
-  favorite: boolean;
-  category: string;
-  description: string;
-  image: string;
-};
-
-type TProductsState = {
-  products: TProduct[];
-  totalProducts: number;
-  loadingStatus: string;
-  error: null | SerializedError;
-};
-
-const initialState: TProductsState = {
-  products: [],
-  totalProducts: 0,
-  loadingStatus: LoadingStatus.Idle,
-  error: null,
+const initialState = {
+  params: {
+    _page: '1',
+    _limit: '10',
+    q: '',
+    category_like: '',
+    _sort: '',
+    _order: '',
+  },
+  sidebar: {
+    isOpen: false,
+  },
 };
 
 const productsSlice = createSlice({
   name: 'products',
   initialState,
-  reducers: {},
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchProducts.pending, (state) => {
-        state.loadingStatus = LoadingStatus.Loading;
-        state.error = null;
-      })
-      .addCase(
-        fetchProducts.fulfilled,
-        (
-          state,
-          {
-            payload,
-          }: {
-            payload: TProduct[];
-          }
-        ) => {
-          state.products = [...payload];
-          state.loadingStatus = LoadingStatus.Idle;
-          state.error = null;
-        }
-      )
-      .addCase(fetchProducts.rejected, (state, action) => {
-        state.loadingStatus = LoadingStatus.Failing;
-        state.error = action.error;
-      })
-      .addCase(fetchTotalQtyProducts.pending, (state) => {
-        state.loadingStatus = LoadingStatus.Loading;
-        state.error = null;
-      })
-      .addCase(fetchTotalQtyProducts.fulfilled, (state, { payload }) => {
-        state.totalProducts = payload.count;
-      })
-      .addCase(fetchTotalQtyProducts.rejected, (state, action) => {
-        state.loadingStatus = LoadingStatus.Failing;
-        state.error = action.error;
-      })
-      .addCase(fetchFilterProducts.pending, (state) => {
-        state.loadingStatus = LoadingStatus.Loading;
-        state.error = null;
-      })
-      .addCase(
-        fetchFilterProducts.fulfilled,
-        (
-          state,
-          {
-            payload,
-          }: {
-            payload: TProduct[];
-          }
-        ) => {
-          state.products = [...payload];
-          state.loadingStatus = LoadingStatus.Idle;
-          state.error = null;
-        }
-      )
-      .addCase(fetchFilterProducts.rejected, (state, action) => {
-        state.loadingStatus = LoadingStatus.Failing;
-        state.error = action.error;
-      });
+  reducers: {
+    //params
+    changeProductsPageParams(state, { payload }) {
+      state.params._page = payload;
+    },
+    changeProductsLimitParams(state, { payload }) {
+      state.params._limit = payload;
+    },
+    changeProductsSearchParams(state, { payload }) {
+      state.params.q = payload;
+    },
+    changeProductsFilterParams(state, { payload }) {
+      const { value } = payload;
+      state.params.category_like = value;
+    },
+    changeProductsSortParams(state, { payload }) {
+      const { key, order } = payload;
+      state.params._sort = key;
+      state.params._order = order;
+    },
+    // sidebar
+    toggleProductsSidebar(state) {
+      state.sidebar.isOpen = !state.sidebar.isOpen;
+    },
   },
 });
 
+export const {
+  changeProductsPageParams,
+  changeProductsLimitParams,
+  changeProductsSearchParams,
+  changeProductsFilterParams,
+  changeProductsSortParams,
+  toggleProductsSidebar,
+} = productsSlice.actions;
 export default productsSlice.reducer;

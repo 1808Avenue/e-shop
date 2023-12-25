@@ -1,15 +1,19 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import paginationReducer from './features/pagination/slice.ts';
+import { api } from './api/products.ts';
+import favProductsReducer from './features/favProducts/slice.ts';
+import modalReducer from './features/modal/slice.ts';
 import productsReducer from './features/products/slice.ts';
-import sidebarReducer from './features/sidebar/slice.ts';
 
 const store = configureStore({
   reducer: {
+    [api.reducerPath]: api.reducer,
     products: productsReducer,
-    pagination: paginationReducer,
-    sidebar: sidebarReducer,
+    favProducts: favProductsReducer,
+    modal: modalReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(api.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
