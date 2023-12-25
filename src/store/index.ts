@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import { api } from './api/products.ts';
 import favProductsReducer from './features/favProducts/slice.ts';
+import modalReducer from './features/modal/slice.ts';
 import productsReducer from './features/products/slice.ts';
 
 const store = configureStore({
@@ -9,6 +10,7 @@ const store = configureStore({
     [api.reducerPath]: api.reducer,
     products: productsReducer,
     favProducts: favProductsReducer,
+    modal: modalReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(api.middleware),

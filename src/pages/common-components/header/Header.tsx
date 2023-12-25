@@ -1,16 +1,17 @@
 import type { MenuProps } from 'antd';
 import { Dropdown, Button, ConfigProvider } from 'antd';
-
-import { useAuth } from '../../../contexts/AuthContext';
-
-import { Link } from 'react-router-dom';
+import { observer } from 'mobx-react-lite';
+import { Link, useLocation } from 'react-router-dom';
 
 import styles from './Header.module.scss';
+import { useAuth } from '../../../contexts/AuthContext';
 import routes from '../../../routes';
 
 import IconUser from '/src/assets/images/header/user-icon.svg?react';
 import IconFavorite from '/src/assets/images/header/favorite-icon.svg?react';
 import IconLogout from '/src/assets/images/header/logout-icon.svg?react';
+
+import cart from '../../../store/features/cart/cart';
 
 const menuStyles = {
   borderRadius: 0,
@@ -20,8 +21,10 @@ const menuStyles = {
   padding: '12px',
 };
 
-export const Header = () => {
+export const Header = observer(() => {
   const { user, logOut } = useAuth();
+
+  const { pathname } = useLocation();
 
   const items: MenuProps['items'] = [
     {
@@ -46,6 +49,14 @@ export const Header = () => {
     },
   ];
 
+  const totalCartItems = cart.items.reduce(
+    (acc, item) => (acc += item.count),
+    0
+  );
+  const classNameTotalCartItems = totalCartItems
+    ? styles.header__total_count_active
+    : styles.header__total_count_disable;
+
   return (
     <header className={styles.header}>
       <div className={styles.header__container}>
@@ -59,9 +70,11 @@ export const Header = () => {
           <h1 className={styles.header__logo_title}>E’Shop</h1>
         </Link>
         <nav className={styles.header__nav}>
+          <span className={classNameTotalCartItems}>{totalCartItems}</span>
           <Link
             className={styles.header__shopping_cart}
             to={routes.pages.shoppingCartPagePath()}
+            state={{ from: pathname }}
           >
             <img
               src="/src/assets/images/header/shopping-cart.svg"
@@ -102,4 +115,4 @@ export const Header = () => {
       </div>
     </header>
   );
-};
+});

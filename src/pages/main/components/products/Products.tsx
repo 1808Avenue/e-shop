@@ -6,6 +6,7 @@ import { selectProductsQueryParams } from '../../../../store/features/products/s
 import { useAppSelector } from '../../../../store/hooks';
 import { Error } from '../../../common-components/error';
 import { Loader } from '../../../common-components/loader';
+import { Modal } from '../../../common-components/modal';
 import { Pagination } from '../pagination';
 import { Product } from '../product';
 
@@ -15,13 +16,9 @@ export const Products = () => {
   const { data, isLoading, isFetching, isError } =
     useGetProductsQuery(queryParams);
 
-  if (isLoading) {
-    return <Loader />;
-  }
+  if (isLoading) return <Loader />;
 
-  if (isError) {
-    return <Error />;
-  }
+  if (isError) return <Error />;
 
   return (
     <section className="products">
@@ -47,6 +44,7 @@ export const Products = () => {
           <Pagination totalCount={data.totalCount} />
         )}
       </div>
+      <Modal />
     </section>
   );
 };
