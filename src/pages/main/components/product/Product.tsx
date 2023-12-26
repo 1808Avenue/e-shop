@@ -1,6 +1,4 @@
-import { useState } from 'react';
-
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 
 import styles from './Product.module.scss';
 
@@ -11,9 +9,14 @@ import {
   useUpdateProductMutation,
 } from '../../../../store/api/products';
 
-export const Product = ({ product }: { product: IProduct }) => {
-  const [updateProduct] = useUpdateProductMutation();
+import cart from '../../../../store/features/cart/cart';
+import { toggleModal } from '../../../../store/features/modal/slice';
+import { useAppDispatch } from '../../../../store/hooks';
 
+export const Product = React.memo(({ product }: { product: IProduct }) => {
+  const dispatch = useAppDispatch();
+
+  const [updateProduct] = useUpdateProductMutation();
   const [isFavorite, setIsFavorite] = useState(product?.favorite);
 
   const favoriteClassName = isFavorite
@@ -24,6 +27,11 @@ export const Product = ({ product }: { product: IProduct }) => {
     setIsFavorite(!isFavorite);
 
     await updateProduct({ ...currentProduct, favorite: !isFavorite });
+  };
+
+  const showModal = (item: IProduct) => () => {
+    cart.itemToAdd = item;
+    dispatch(toggleModal());
   };
 
   return (
@@ -39,14 +47,17 @@ export const Product = ({ product }: { product: IProduct }) => {
       <div className={styles.products__item_description}>
         <h3 className={styles.products__item_name}>{product.title}</h3>
         <p className={styles.products__item_price}>$ {product.price}</p>
-        <Link className={styles.products__item_shopping_cart} to="#">
+        <button
+          className={styles.products__item_shopping_cart}
+          onClick={showModal(product)}
+        >
           <img
             src="/src/assets/images/header/shopping-cart.svg"
             draggable="false"
             alt="shopping-cart"
           />
-        </Link>
+        </button>
       </div>
     </div>
   );
-};
+});

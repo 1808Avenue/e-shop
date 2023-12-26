@@ -5,11 +5,14 @@ const apiPath = 'http://localhost:3001/products';
 export interface IProduct {
   id: number;
   title: string;
-  price: string;
+  price: number;
   favorite: boolean;
   category: string;
   description: string;
   image: string;
+  count: number;
+  totalCount: number;
+  selected: boolean;
 }
 
 interface IProductsResponse {
@@ -17,11 +20,27 @@ interface IProductsResponse {
   totalCount: number;
 }
 
+interface IQueryParams {
+  _page: string;
+  _limit: string;
+  q: string;
+  category_like: string;
+  _sort: string;
+  _order: string;
+}
+
+interface IFavQueryParams {
+  _page: string;
+  _limit: string;
+  favorite_like: boolean;
+  category_like: string;
+}
+
 export const api = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: apiPath }),
   tagTypes: ['Product'],
   endpoints: (build) => ({
-    getProducts: build.query<IProductsResponse, string>({
+    getProducts: build.query<IProductsResponse, IQueryParams>({
       query: (params) => ({
         url: apiPath,
         params: { ...params },
@@ -34,7 +53,7 @@ export const api = createApi({
       },
       providesTags: ['Product'],
     }),
-    getFavoriteProducts: build.query<IProductsResponse, string>({
+    getFavoriteProducts: build.query<IProductsResponse, IFavQueryParams>({
       query: (params) => ({
         url: apiPath,
         params: { ...params },
@@ -56,8 +75,7 @@ export const api = createApi({
         { id, ...patch },
         { dispatch, queryFulfilled, getState }
       ) {
-        const params = getState().products.params;
-
+        const params: IQueryParams = getState().products.params;
         const patchResult = dispatch(
           api.util.updateQueryData('getProducts', params, (draft) => {
             const { products } = draft;
@@ -81,8 +99,7 @@ export const api = createApi({
         body: patch,
       }),
       async onQueryStarted({ id }, { dispatch, queryFulfilled, getState }) {
-        const params = getState().favProducts.params;
-
+        const params: IFavQueryParams = getState().favProducts.params;
         const patchResult = dispatch(
           api.util.updateQueryData('getFavoriteProducts', params, (draft) => {
             const { products } = draft;

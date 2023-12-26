@@ -5,6 +5,6 @@ export default {
     signupPagePath: () => '/signup',
     userPagePath: () => '/user',
     favoritesPagePath: () => '/favorite-products',
-    shoppingCartPagePath: () => '/shopping-cart',
+    shoppingCartPagePath: () => '/cart',
   },
 };

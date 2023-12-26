@@ -11,6 +11,7 @@ import { selectFavProductsQueryParams } from '../../../../store/features/favProd
 import { useAppSelector } from '../../../../store/hooks';
 import { Error } from '../../../common-components/error';
 import { Loader } from '../../../common-components/loader';
+import { Modal } from '../../../common-components/modal';
 import { FavPagination } from '../favPagination';
 import { FavProduct } from '../favProduct';
 
@@ -24,13 +25,9 @@ export const FavProducts = () => {
     refetch();
   }, [refetch, queryParams]);
 
-  if (isLoading) {
-    return <Loader />;
-  }
+  if (isLoading) return <Loader />;
 
-  if (isError) {
-    return <Error />;
-  }
+  if (isError) return <Error />;
 
   return (
     <section className="fav_products">
@@ -56,6 +53,7 @@ export const FavProducts = () => {
           <FavPagination totalCount={data.totalCount} />
         )}
       </div>
+      <Modal />
     </section>
   );
 };

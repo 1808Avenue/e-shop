@@ -21,7 +21,7 @@ $base-color: #999a1c;
 
     @media (max-width: 670px) {
       flex-direction: column;
-      gap: 10px 0;
+      gap: 20px 0;
       padding: 15px 20px 15px 20px;
     }
   }
@@ -43,8 +43,28 @@ $base-color: #999a1c;
 
   &__nav {
     display: flex;
+    position: relative;
     gap: 0 15px;
     align-items: center;
+  }
+
+  &__total_count_active {
+    position: absolute;
+    top: -16px;
+    left: 16px;
+    background-color: #fff;
+    border-radius: 50%;
+    min-width: 24px;
+    min-height: 24px;
+    text-align: center;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  &__total_count_disable {
+    display: none;
   }
 
   &__dropdown {
@@ -93,5 +113,6 @@ $base-color: #999a1c;
     color: rgba(0, 0, 0, 0.8);
     font-size: 18px;
     line-height: normal;
+    font-family: Raleway;
   }
 }
