@@ -76,7 +76,6 @@ export const api = createApi({
         { dispatch, queryFulfilled, getState }
       ) {
         const params: IQueryParams = getState().products.params;
-
         const patchResult = dispatch(
           api.util.updateQueryData('getProducts', params, (draft) => {
             const { products } = draft;
@@ -101,7 +100,6 @@ export const api = createApi({
       }),
       async onQueryStarted({ id }, { dispatch, queryFulfilled, getState }) {
         const params: IFavQueryParams = getState().favProducts.params;
-
         const patchResult = dispatch(
           api.util.updateQueryData('getFavoriteProducts', params, (draft) => {
             const { products } = draft;

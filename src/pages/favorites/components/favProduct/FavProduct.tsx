@@ -6,6 +6,7 @@ import {
 
 import FavoriteProductIcon from '/src/assets/images/products/product-favorite-icon-fill.svg?react';
 
+
 import cart from '../../../../store/features/cart/cart';
 import { toggleModal } from '../../../../store/features/modal/slice';
 import { useAppDispatch } from '../../../../store/hooks';
@@ -23,7 +24,7 @@ export const FavProduct = ({ product }: { product: IProduct }) => {
       favorite: !currentProduct.favorite,
     });
   };
-
+  
   const showModal = (item: IProduct) => () => {
     cart.itemToAdd = item;
     dispatch(toggleModal());

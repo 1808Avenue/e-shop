@@ -8,6 +8,7 @@ import {
   IProduct,
   useUpdateProductMutation,
 } from '../../../../store/api/products';
+
 import cart from '../../../../store/features/cart/cart';
 import { toggleModal } from '../../../../store/features/modal/slice';
 import { useAppDispatch } from '../../../../store/hooks';
