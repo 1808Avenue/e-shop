@@ -49,23 +49,22 @@ export const CartItem = observer(({ product }: { product: IProduct }) => {
       className={`${styles.cart_item} ${classNameSelected}`}
       key={product.id}
     >
-      <div className={styles.cart_item__info}>
-        <ConfigProvider
-          theme={{
-            token: {
-              colorPrimary: '#000',
-            },
-          }}
-        >
-          <Checkbox
-            onChange={handlerToggleSelect(product)}
-            checked={selected}
-          />
-        </ConfigProvider>
-        <IconProductFill className={styles.cart_item__product_img} />
-        <h2 className={styles.cart_item__title}>{title}</h2>
-        <p className={styles.cart_item__price}>$ {price}</p>
-      </div>
+      <ConfigProvider
+        theme={{
+          token: {
+            colorPrimary: '#000',
+          },
+        }}
+      >
+        <Checkbox
+          className={styles.cart_item__checkbox}
+          onChange={handlerToggleSelect(product)}
+          checked={selected}
+        />
+      </ConfigProvider>
+      <IconProductFill className={styles.cart_item__product_img} />
+      <h2 className={styles.cart_item__title}>{title}</h2>
+      <p className={styles.cart_item__price}>$ {price}</p>
       <div className={styles.cart_item__controls}>
         <button
           className={styles.cart_item__minus_button}
@@ -84,14 +83,14 @@ export const CartItem = observer(({ product }: { product: IProduct }) => {
         <p className={styles.cart_item__total_count}>
           of <span>{totalCount}</span>
         </p>
-        <p className={styles.cart_item__total_price}>$ {price * count}</p>
-        <button
-          className={styles.cart_item__remove_button}
-          onClick={handlerRemoveItem(product)}
-        >
-          <IconRemove />
-        </button>
       </div>
+      <p className={styles.cart_item__total_price}>$ {price * count}</p>
+      <button
+        className={styles.cart_item__remove_button}
+        onClick={handlerRemoveItem(product)}
+      >
+        <IconRemove />
+      </button>
     </div>
   );
 });

@@ -21,6 +21,10 @@
     &:hover {
       @include scale;
     }
+
+    @media (max-width: 960px) {
+      left: -15px;
+    }
   }
 
   &__title {
@@ -53,6 +57,14 @@
     overflow-y: auto;
     position: relative;
     height: 328px;
+
+    @media (max-width: 960px) {
+      height: 332px;
+    }
+
+    // @media (max-width: 740px) {
+    //   height: 340px;
+    // }
   }
 
   &__pay {

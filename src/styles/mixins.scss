@@ -3,6 +3,11 @@
   padding-left: 55px;
   padding-right: 55px;
   margin: 0 auto;
+
+  @media (max-width: 960px) {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }
 
 @mixin scale {
